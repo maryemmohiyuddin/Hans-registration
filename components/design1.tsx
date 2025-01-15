@@ -1,11 +1,23 @@
 'use client'
-import { title } from "@/components/primitives";
-
-import { Input } from "@nextui-org/react";
-import { Checkbox } from "@nextui-org/react";
-
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
+import { TiTick } from "react-icons/ti";
+import { useState } from "react"; // Import useState to manage checkbox state
 
 export default function Design1() {
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [isChecked, setIsChecked] = useState(false); // State to track checkbox status
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked); // Update checkbox state
+  };
+  
   return (
     <div className=" flex flex-col text-[#d7d7d7]  gap-2 text-start justify-start items-start">
       <h1 className="text-5xl font-bold ">
@@ -24,8 +36,10 @@ export default function Design1() {
         />
         <div className="flex flex-col justify-start items-start gap-2 text-md w-full">
           <div className="flex justify-between w-full">
-            <p>Would you like to be informed of the opening of the clinic and the services that will be offered?
+            <p>
+            Are you interested in online consultations (teleconsultation)?
             </p>
+
             <div className="   flex border rounded-lg items-center justify-center border-[#D5BA7F] ">
             <div className="text-[#D5BA7F] rounded-lg font-bold bg-[#3E3E3E] px-3  py-1 ">
                 Yes
@@ -52,7 +66,8 @@ export default function Design1() {
 
           <div className="flex justify-between w-full">
 
-            <p>Are you interested in online consultations (teleconsultation)?
+            <p>
+            Would you like to be notified about the clinic opening and its services?
             </p>
             <div className="   flex border items-center justify-center rounded-lg border-[#D5BA7F] ">
               <div className="text-[#D5BA7F] rounded-lg font-bold bg-[#3E3E3E] px-3  py-1 ">
@@ -63,15 +78,102 @@ export default function Design1() {
               </div>
             </div>
           </div>
-          <label className="text-md">
-  <input className="mr-2" type="checkbox" />
-  I accept the <a className="text-[#D5BA7F] cursor-pointer font-semibold">data processing conditions</a> described.
+          <label className="text-md flex items-center ">
+  <input className="mr-2 custom-checkbox" type="checkbox"
+                onChange={handleCheckboxChange} // Update checkbox state on change
+
+    style={{ transform: "scale(1.2)" }}
+
+  />
+  I accept the <button
+  className="text-[#D5BA7F] ml-1 mr-1 cursor-pointer font-semibold bg-transparent p-0"
+  
+  onClick={onOpen}
+>
+   data processing conditions
+</button>
+  described.
 </label>
 
 
         </div>
-        <button className=" mt-2  text-[#3E3E3E]  bg-[#D5BA7F]   font-bold rounded-lg px-4 py-2 max-w-xs">Submit</button>
-      </div>
+        <button
+          className={`mt-2 text-[#3E3E3E] bg-[#D5BA7F] font-bold rounded-lg px-4 py-2 max-w-xs w-[150px] ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} // Conditionally apply opacity and cursor style
+          disabled={!isChecked} // Disable the button when checkbox is unchecked
+        >
+          Submit
+        </button>      </div>
+      <Modal   size={'4xl'} backdrop={'blur'} placement={'center'} isOpen={isOpen} onOpenChange={onOpenChange} className='w-[1000px]'>
+        <ModalContent  className='w-[12000px]'>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col  border-b border-[#D5BA7F] gap-1 bg-[#1c1c1c] text-2xl  text-[#D5BA7F] ">Protection de Vos Données</ModalHeader>
+              <ModalBody className='bg-[#1c1c1c] pt-8'>
+                <div>
+
+                Les informations recueillies dans le cadre de ce questionnaire seront traitées par Annecy Behavioral Science Lab. La confidentialité et l’anonymat seront préservés lors du traitement.
+                <br /><br />
+                Conformément au Règlement Général sur la Protection des Données du 27 avril 2016, vous disposez :<br /><br />
+<div className="flex justify-between">
+  
+<div className="">
+
+<span className=' flex items-center justify-start  gap-2'>
+<TiTick color="#D5BA7F" />
+D'un droit d'accès
+</span>
+<span className=' flex items-center justify-start  gap-2'>
+<TiTick color="#D5BA7F" />
+D'un droit d'effacement
+
+</span>
+
+<span className=' flex items-center justify-start  gap-2'>
+<TiTick color="#D5BA7F" />
+D'un droit de rectification
+
+</span>
+</div>
+<div className="">
+
+<span className=' flex items-center justify-start  gap-2 pr-10'>
+
+<TiTick color="#D5BA7F"/>
+D'un droit de limitation
+
+</span>
+
+<span className=' flex items-center justify-start  gap-2'>
+<TiTick color="#D5BA7F" />
+D'un droit à la portabilité
+
+
+</span>
+<span className=' flex items-center justify-start  gap-2'>
+<TiTick color="#D5BA7F" />
+D'un droit d'opposition 
+</span>
+</div>
+</div>
+
+<br />
+Vous pouvez également révoquer vos consentements aux traitements à tout moment.<br /><br />
+Pour exercer ces droits, vous pouvez contacter directement <span className='text-[#D5BA7F] underline font-semibold'>Annecy Behavioral Science Lab</span>, qui s’engage à le faire dans les délais légaux et à en informer Annecy Behavioral Science Lab.
+                </div>
+              
+              </ModalBody>
+              <ModalFooter className='bg-[#1c1c1c]'>
+                <button  className=" mt-2  text-[#3E3E3E]  bg-[#D5BA7F]   font-bold rounded-lg px-4 py-2 max-w-xs w-[150px]" onClick={onClose}>
+                  Close
+                </button>
+                {/* <Button color="primary" onPress={onClose}>
+                  Action
+                </Button> */}
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 }

@@ -4,10 +4,8 @@ export default function AboutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="">
-      <div className="">
+    <div className="">
         {children}
-      </div>
-    </section>
+    </div>
   );
 }

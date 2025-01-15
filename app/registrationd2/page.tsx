@@ -13,7 +13,7 @@ export default function About() {
       <Design2 />
       </div>
       <div className="w-[30%] flex justify-center items-center h-full pr-14">
-      <img src="./Solstice white.png" alt="Circular Masked Image  " className="h-80" />
+      <img src="./Solstice white.png" alt="Circular Masked Image  " className="h-80 opacity-70" />
       </div>
       {/* <div className="circle-mask ">
         <img src="./therapy2.jpg" alt="Circular Masked Image  " />

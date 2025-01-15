@@ -15,6 +15,9 @@ module.exports = {
         spectral: ['Spectral', 'serif'],
 
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
     },
   },
   darkMode: "class",

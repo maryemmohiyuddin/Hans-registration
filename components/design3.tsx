@@ -3,9 +3,15 @@ import { title } from "@/components/primitives";
 
 import { Input } from "@nextui-org/react";
 import { Checkbox } from "@nextui-org/react";
+import { useState } from "react"; // Import useState to manage checkbox state
 
 
 export default function Design3() {
+    const [isChecked, setIsChecked] = useState(false); // State to track checkbox status
+    const handleCheckboxChange = (event) => {
+      setIsChecked(event.target.checked); // Update checkbox state
+    };
+    
   return (
     <div className=" flex flex-col text-[#d7d7d7]  gap-2 text-start justify-start items-start">
       <h1 className="text-5xl font-bold ">
@@ -63,14 +69,23 @@ export default function Design3() {
               </div>
             </div>
           </div>
-          <label className="text-sm">
-  <input className="mr-2" type="checkbox" />
-  I accept the <a className="text-[#D5BA7F] cursor-pointer font-semibold">data processing conditions</a> described.
+          <label className="text-md flex items-center ">
+  <input className="mr-2 custom-checkbox" type="checkbox"
+                onChange={handleCheckboxChange} // Update checkbox state on change
+      style={{ transform: "scale(1.2)" }}
+
+  />
+  I accept the <a href='#data' className="text-[#D5BA7F] ml-1 mr-1 cursor-pointer font-semibold">data processing conditions</a> described.
 </label>
 
 
         </div>
-        <button className=" mt-2  text-[#3E3E3E]  bg-[#D5BA7F]   font-bold rounded-lg px-4 py-2 max-w-xs">Submit</button>
+        <button
+          className={`mt-2 text-[#3E3E3E] bg-[#D5BA7F] font-bold rounded-lg px-4 py-2 max-w-xs w-[150px] ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} // Conditionally apply opacity and cursor style
+          disabled={!isChecked} // Disable the button when checkbox is unchecked
+        >
+          Submit
+        </button>
       </div>
     </div>
   );
