@@ -8,7 +8,7 @@ import { useState } from "react"; // Import useState to manage checkbox state
 
 export default function Design3() {
     const [isChecked, setIsChecked] = useState(false); // State to track checkbox status
-    const handleCheckboxChange = (event) => {
+    const handleCheckboxChange = (event:any) => {
       setIsChecked(event.target.checked); // Update checkbox state
     };
     

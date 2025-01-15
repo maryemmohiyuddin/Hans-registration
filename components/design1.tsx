@@ -14,7 +14,7 @@ import { useState } from "react"; // Import useState to manage checkbox state
 export default function Design1() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [isChecked, setIsChecked] = useState(false); // State to track checkbox status
-  const handleCheckboxChange = (event) => {
+  const handleCheckboxChange = (event:any) => {
     setIsChecked(event.target.checked); // Update checkbox state
   };
   

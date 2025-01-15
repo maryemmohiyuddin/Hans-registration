@@ -19,7 +19,7 @@ export default function Design2() {
     const [isChecked, setIsChecked] = useState(false); // State to track checkbox status
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
   
-  const handleCheckboxChange = (event) => {
+  const handleCheckboxChange = (event:any) => {
     setIsChecked(event.target.checked); // Update checkbox state
   };
   return (

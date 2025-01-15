@@ -31,7 +31,7 @@ export default function Questionnaire1() {
 
             <div className='py-20 px-32 w-screen flex flex-col items-center  justify-center h-[100vh]'>
             {/* <img src='./logo.png' className="h-32 mb-12 mt-10 opacity-30 z-50 absolute" /> */}
-            {/* <img src='./Solstice white.png' className="h-[500px] mb-12 mt-10 opacity-5 z-50 absolute" /> */}
+            <img src='./Solstice white.png' className="h-[500px] mb-12 mt-10 opacity-5 z-50 absolute" />
 
             <div className="flex w-full left-[3%] pt-10  justify-between items-start gap-40">
                 <div className=' h-full w-[70%] flex flex-col justify-between  items-start'>
