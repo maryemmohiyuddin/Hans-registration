@@ -6,10 +6,35 @@ import App from "@/components/navbar";
 
 export default function About() {
   const images = [
-    "./therpy3.jpg",
-    "./therapy6.jpg",
-    "./therapy5.png",
+    // "./14.jpg",
+    // "./12.jpg",
+    "./7.jpg",
+
+    "./13.png",
+    "./1.png",
+
+
+
+
+
+
+    // "./12.webp",
+
+
+    // "./5.jpg",
+    // "./5.png",
+    // "./8.jpg",
+
+    // "./8.jpeg",
+
+
+
+
+
+
+    // "./therapy4.jpg"
     // "./therapy4.jpg",
+    // ,
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

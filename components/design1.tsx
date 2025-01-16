@@ -14,6 +14,14 @@ import { useState } from "react"; // Import useState to manage checkbox state
 export default function Design1() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [isChecked, setIsChecked] = useState(false); // State to track checkbox status
+  const [selected, setSelected] = useState("Yes"); // Default selected button
+  const [onlineConsultation, setOnlineConsultation] = useState("Yes");
+  const [faceToFaceConsultation, setFaceToFaceConsultation] = useState("Yes");
+  const [clinicNotification, setClinicNotification] = useState("Yes");
+  const toggleSelection = () => {
+    setSelected((prev) => (prev === "Yes" ? "No" : "Yes"));
+  };
+
   const handleCheckboxChange = (event:any) => {
     setIsChecked(event.target.checked); // Update checkbox state
   };
@@ -35,49 +43,75 @@ export default function Design1() {
           type="email"
         />
         <div className="flex flex-col justify-start items-start gap-2 text-md w-full">
-          <div className="flex justify-between w-full">
-            <p>
-            Are you interested in online consultations (teleconsultation)?
-            </p>
-
-            <div className="   flex border rounded-lg items-center justify-center border-[#D5BA7F] ">
-            <div className="text-[#D5BA7F] rounded-lg font-bold bg-[#3E3E3E] px-3  py-1 ">
-                Yes
-              </div>
-              <div className="text-[#D5BA7F]  px-3 py-1">
-                No
-              </div>
-            </div>
+        <div className="flex justify-between w-full">
+        <p>Are you interested in online consultations (teleconsultation)?</p>
+        <div
+          className="relative flex border rounded-lg items-center justify-between border-[#D5BA7F] w-[100px] h-[35px]"
+          onClick={() =>
+            setOnlineConsultation((prev) => (prev === "Yes" ? "No" : "Yes"))
+          }
+        >
+          <div
+            className={`absolute top-0 left-0 h-full w-1/2 rounded-lg bg-[#3E3E3E] transition-transform duration-300 ${
+              onlineConsultation === "No" ? "translate-x-full" : ""
+            }`}
+          ></div>
+          <div className="z-10 flex w-full justify-around text-[#D5BA7F] font-bold">
+            <div className="flex-1 text-center py-1 cursor-pointer">Yes</div>
+            <div className="flex-1 text-center py-1 cursor-pointer">No</div>
           </div>
-          <div className="flex justify-between w-full">
+        </div>
+      </div>
 
-            <p>Are you interested in face-to-face consultations at the Annecy clinic?
-
-            </p>
-            <div className="   flex border items-center justify-center rounded-lg border-[#D5BA7F] ">
-            <div className="text-[#D5BA7F] rounded-lg font-bold bg-[#3E3E3E] px-3  py-1 ">
-                Yes
-              </div>
-              <div className="text-[#D5BA7F] px-3 py-1">
-                No
-              </div>
-            </div>
+      {/* Face-to-Face Consultation */}
+      <div className="flex justify-between w-full">
+        <p>
+          Are you interested in face-to-face consultations at the Annecy
+          clinic?
+        </p>
+        <div
+          className="relative flex border rounded-lg items-center justify-between border-[#D5BA7F] w-[100px] h-[35px]"
+          onClick={() =>
+            setFaceToFaceConsultation((prev) =>
+              prev === "Yes" ? "No" : "Yes"
+            )
+          }
+        >
+          <div
+            className={`absolute top-0 left-0 h-full w-1/2 rounded-lg bg-[#3E3E3E] transition-transform duration-300 ${
+              faceToFaceConsultation === "No" ? "translate-x-full" : ""
+            }`}
+          ></div>
+          <div className="z-10 flex w-full justify-around text-[#D5BA7F] font-bold">
+            <div className="flex-1 text-center py-1 cursor-pointer">Yes</div>
+            <div className="flex-1 text-center py-1 cursor-pointer">No</div>
           </div>
+        </div>
+      </div>
 
-          <div className="flex justify-between w-full">
-
-            <p>
-            Would you like to be notified about the clinic opening and its services?
-            </p>
-            <div className="   flex border items-center justify-center rounded-lg border-[#D5BA7F] ">
-              <div className="text-[#D5BA7F] rounded-lg font-bold bg-[#3E3E3E] px-3  py-1 ">
-                Yes
-              </div>
-              <div className="text-[#D5BA7F] px-3 py-1">
-                No
-              </div>
-            </div>
+      {/* Clinic Notifications */}
+      <div className="flex justify-between w-full">
+        <p>
+          Would you like to be notified about the clinic opening and its
+          services?
+        </p>
+        <div
+          className="relative flex border rounded-lg items-center justify-between border-[#D5BA7F] w-[100px] h-[35px]"
+          onClick={() =>
+            setClinicNotification((prev) => (prev === "Yes" ? "No" : "Yes"))
+          }
+        >
+          <div
+            className={`absolute top-0 left-0 h-full w-1/2 rounded-lg bg-[#3E3E3E] transition-transform duration-300 ${
+              clinicNotification === "No" ? "translate-x-full" : ""
+            }`}
+          ></div>
+          <div className="z-10 flex w-full justify-around text-[#D5BA7F] font-bold">
+            <div className="flex-1 text-center py-1 cursor-pointer">Yes</div>
+            <div className="flex-1 text-center py-1 cursor-pointer">No</div>
           </div>
+        </div>
+      </div>
           <label className="text-md flex items-center ">
   <input className="mr-2 custom-checkbox" type="checkbox"
                 onChange={handleCheckboxChange} // Update checkbox state on change
