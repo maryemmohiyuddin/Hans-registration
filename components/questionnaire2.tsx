@@ -38,7 +38,7 @@ export default function Questionnaire2() {
             <div className="flex w-full left-[3%] pt-10  justify-between items-start gap-40">
 
                 <div className=' h-full w-[70%] flex flex-col justify-between  items-center'>
-                    {/* <img src='./Solstice white.png' className="h-[500px]  mx-auto  opacity-5 z-50 absolute" /> */}
+                    <img src='./Solstice white.png' className="h-[500px]  mx-auto  opacity-5 z-50 absolute" />
 
 
 
