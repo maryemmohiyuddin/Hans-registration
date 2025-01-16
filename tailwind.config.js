@@ -9,6 +9,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'scale-pulse': 'scale-effect 1s infinite',
+      },
+      keyframes: {
+        'scale-effect': {
+          '0%, 100%': { transform: 'scale(1)' }, // Normal size
+          '50%': { transform: 'scale(1.2)' },   // Enlarged size
+        },
+      },
       fontFamily: {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],

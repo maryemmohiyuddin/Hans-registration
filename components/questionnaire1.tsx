@@ -16,6 +16,7 @@ import { MdSkipPrevious } from "react-icons/md";
 import { IoMdArrowDropright } from "react-icons/io";
 import { IoMdArrowDropleft } from "react-icons/io";
 import Navbar from './navbar'
+import {Tooltip} from "@nextui-org/react";
 
 
 
@@ -31,20 +32,25 @@ export default function Questionnaire1() {
 
             <div className='py-20 px-32 w-screen flex flex-col items-center  justify-center h-[100vh]'>
             {/* <img src='./logo.png' className="h-32 mb-12 mt-10 opacity-30 z-50 absolute" /> */}
-            <img src='./Solstice white.png' className="h-[500px] mb-12 mt-10 opacity-5 z-50 absolute" />
 
             <div className="flex w-full left-[3%] pt-10  justify-between items-start gap-40">
-                <div className=' h-full w-[70%] flex flex-col justify-between  items-start'>
+
+                <div className=' h-full w-[70%] flex flex-col justify-between  items-center'>
+                    <img src='./Solstice white.png' className="h-[500px]  mx-auto  opacity-5 z-50 absolute" />
+
+
+
                 {/* <h1 className="text-5xl font-bold">
                         Question
 
                     </h1>
                     <p className=" mb-10 mt-2 text-gray-300">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, cumque?</p> */}
-                   <div>
+                   <div className="w-full ">
+                    <div>
+
                     <h1 className="font-semibold mb-1">Question 13 of 20</h1>
                     <h1 className="text-3xl font-bold mb-10">
-                    How often do you feel like there are people to talk to?                    </h1>
-                    <div>
+                    How often do you feel like there are people to talk to?                   </h1>
 
   
 </div>
@@ -136,16 +142,23 @@ export default function Questionnaire1() {
                </div>
                    
                     <div className=" h-3  relative w-[100%] bg-white bg-opacity-90">
-                    <p className='absolute top-5 text-sm'>0%</p>
-                    <p className='absolute top-5 text-sm right-0'>100%</p>
+                    <p className='absolute top-5 text-sm'>1</p>
+                    <p className='absolute top-5 text-sm right-0'>20</p>
 
-                    <div className=" bg-[#D5BA7F] h-3  w-[51%] absolute">
+                    <div className=" bg-[#D5BA7F] h-3  w-[50%] absolute">
+                    <p className='absolute bottom-7 text-sm  right-[-1.5%] '>10</p>
+
+                    <Tooltip content="Answered Questions" className="text-white">
+                    <img src='./Solstice white.png' className="absolute z-[1000] cursor-pointer w-8 right-[-4%] top-[-80%]" />
+
+</Tooltip>
                     </div>
+                    <Tooltip content="Current Question" className="text-white">
 
-                    <img src='./Solstice circled white.png' className="absolute w-8 left-[70%] top-[-80%]"/>
-                    <img src='./Solstice white.png' className="absolute w-8 left-[50%] top-[-80%]" />
-                    <p className='absolute bottom-7 text-sm  left-[50%] '>50%</p>
-                    <p className='absolute bottom-7 text-sm  left-[70%] '>70%</p>
+                    <img src='./Solstice circled white.png' className="absolute z-[1000] cursor-pointer  w-8 left-[65%] top-[-80%]"/>
+</Tooltip>
+
+                    <p className='absolute bottom-7 text-sm  left-[65.7%] '>13</p>
 
 
 
@@ -208,10 +221,13 @@ export default function Questionnaire1() {
                         <div className="h-8 w-8 rounded-lg bg-[#D5BA7F]"></div>
                         <div className="h-8 w-8 rounded-lg bg-white bg-opacity-90"></div>
 
-                        <div className="h-8 w-8 flex items-center justify-center rounded-lg bg-opacity-90">
-                        <img src='./Solstice circled white.png' className=" w-8 left-[50%] top-[-80%]" />
-
-                        </div>
+                        <div className="h-8 w-8 flex items-center justify-center rounded-lg bg-opacity-90 animate-scale-pulse">
+  <img
+    src="./Solstice circled white.png"
+    className="w-8"
+    alt="Solstice Circled White"
+  />
+</div>
 
                         <div className="h-8 w-8 rounded-lg bg-[#D5BA7F]"></div>
 
