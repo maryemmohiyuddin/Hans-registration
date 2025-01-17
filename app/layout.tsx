@@ -24,12 +24,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
-            <head>
+      <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
         <link
           href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/png" href="/Solstice white1.png" />
+<title>Solstice Psychologues</title>
       </head>
       <body
         className={clsx(
