@@ -32,7 +32,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link rel="icon" type="image/png" href="/Solstice white1.png" />
-<title>Solstice Psychologues</title>
+        <title>Solstice Psychologues</title>
       </head>
       <body
         className={clsx(
