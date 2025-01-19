@@ -1,7 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
+import '../styles/loneliness-range-slider.scss'
 
-export default function RangeSlider({ onAnswerChange, answers, currentIndex }:any) {
+export default function LonelinessRangeSider({ onAnswerChange, answers, currentIndex }:any) {
     const [currentValue, setCurrentValue] = useState();
 
 	useEffect(() => {
@@ -51,7 +52,7 @@ export default function RangeSlider({ onAnswerChange, answers, currentIndex }:an
                         checked={currentValue === "Sometimes"}
                         required
                     />
-                    <label htmlFor="Sometimes" data-debt-amount="Sometimes"></label>
+                    <label htmlFor="Sometimes"  data-debt-amount="Sometimes"></label>
 
                     <input
                         type="radio"

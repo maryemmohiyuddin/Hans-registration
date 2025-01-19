@@ -1,6 +1,8 @@
 'use client'
 
-import RangeSider from "@/components/range-slider";
+import LonelinessRangeSider from "@/components/loneliness-range-slider";
+import AttachmentRangeSider from "@/components/attachment-range-slider";
+
 import Navbar from './navbar'
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -25,35 +27,16 @@ const STATUS_CONTENT_MAP = {
       text: "Payment succeeded",
       iconColor: "#30B130",
       icon: SuccessIcon,
-    },
+    }
 }
-export default function Questionnaire() {
+export default function LonelinessQuestionnaire(props:any) {
+    const questions=props.questions
+    const survey=props.survey
+
+    console.log("survery", survey)
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-    const questions = [
-        { question: "How often do you feel like you have a lot in common with the people around you?" },
-        { question: "How often do you feel like you are no longer close to anyone?" },
-        { question: "How often do you feel sociable and friendly?" },
-        { question: "How often do you feel like there are people who really understand you?" },
-        { question: "How often do you feel shy?" },
-        { question: "How often do you feel like there are people around you, but not with you?" },
-        { question: "How often do you feel like you are part of a group of friends?" },
-        { question: "How often do you feel that your relationships with others are meaningless?" },
-        { question: "How often do you feel like there are people to talk to?" },
-        { question: "How often do you feel like you can find company whenever you want it?" },
-        { question: "How often do you feel isolated from others?" },
-        { question: "How often do you feel like there is no one you can turn to?" },
-        { question: "How often do you feel lonely?" },
-        { question: "How often do you feel close to others?" },
-        { question: "How often do you feel like you are “in tune” with the people around you?" },
-        { question: "How often do you feel like there are people you can turn to?" },
-        { question: "How often do you feel like you lack company?" },
-        { question: "How often do you feel that your interests and ideas are not shared by others?" },
-        { question: "How often do you feel like you're being left out?" },
-        { question: "How often do you feel like no one really knows you well?" },
-
-    ];
-
+ 
     // Use state to track the current question index
 
     // Function to go to the next question
@@ -73,7 +56,7 @@ export default function Questionnaire() {
               console.log("called next quesin", flag, answers)
         if (answers[currentIndex] === null && flag === null) {
             setShowTooltip(true);
-            setTimeout(() => setShowTooltip(false), 2000);
+            setTimeout(() => setShowTooltip(false), 3000);
         } else if (flag === 'submit') {
             const answeredCount = answers.filter(answer => answer !== null).length;
             const minimumRequired = Math.ceil(questions.length / 2); // Calculate 50% of total questions
@@ -87,7 +70,7 @@ export default function Questionnaire() {
                 setAnsweredQuestions(answeredQuestions)
                 setHalfThreshold(halfThreshold)
                 setShowSubmitTooltip(true);
-                setTimeout(() => setShowSubmitTooltip(false), 2000);
+                setTimeout(() => setShowSubmitTooltip(false), 3000);
             } else {
                 console.log("Submission successful!");
                 onOpen()
@@ -163,7 +146,7 @@ export default function Questionnaire() {
       <h2 id="status-text " className='my-4 font-semibold text-xl text-center'>{STATUS_CONTENT_MAP['succeeded'].text}</h2> */}
       {/* <div id="lottie-container" style={{ width: 300, height: 300 }}></div> */}
 
-                <div className="flex w-full left-[3%] pt-10  justify-between items-start gap-40">
+                <div className="flex w-full left-[3%] pt-10  justify-between items-start gap-40 h-[510px]">
                     <div className=' h-full w-[70%] flex flex-col justify-between  items-center'>
                         <img src='./Solstice white.png' className="h-[500px]  mx-auto  opacity-5 z-50 absolute" />
                         <div className="w-[59vw] ms-4">
@@ -175,7 +158,11 @@ export default function Questionnaire() {
                                 </h1>
                             </div>
                         </div>
-                        <RangeSider onAnswerChange={handleAnswerChange} answers={answers} currentIndex={currentIndex} />
+                     
+<LonelinessRangeSider onAnswerChange={handleAnswerChange} answers={answers} currentIndex={currentIndex} />
+
+                      
+
                         <div className='flex z-50 pt-10 w-full justify-center items-center   '>
                             <div className='flex flex-col items-center justify-between '>
                                 <div className="flex gap-5">
@@ -248,7 +235,8 @@ export default function Questionnaire() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex w-[30%] flex-col gap-3 items-start pt-2 justify-center">
+                    <div className="flex w-[30%] flex-col gap-3 items-start pt-2 justify-start  ">
+                      
                         <div>
                             <h1 className="text-xl font-bold text-left">
                                 Questions
@@ -256,7 +244,7 @@ export default function Questionnaire() {
                             <p className="text-sm">Follow your progress here.</p>
                         </div>
                         <div className="flex flex-wrap gap-x-5 gap-y-3 pt-5">
-                            {questions.map((_, index) => (
+                            {questions.map((_:any, index:any) => (
                                 <div
                                     key={index}
                                     className={`h-8 w-8 flex cursor-pointer  transform transition-transform duration-100 ${index !== currentIndex && 'hover:scale-90'} border-black items-center justify-center rounded-lg ${index === currentIndex && '!bg-transparent'} ${answers[index] !== null ? "bg-[#D5BA7F]" : "bg-white bg-opacity-90"}`}
